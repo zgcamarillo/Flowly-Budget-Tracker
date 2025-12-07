@@ -1,14 +1,27 @@
 //classes + utitlities
+    //Entry class 
+    class Entry {
+        constructor(title, amount, description) {
+            this.title = title;
+            this.amount = Number(amount);
+            this.description = description;
+            this.id = Date.now();
+        }
+    }
     //budget class
 class Budget {
     #income = 0; //private fields
     #expenses = 0;
+    incomes = [];
+    expenses = [];
     //methods 
-    addIncome(amount) {
-        this.#income += Number(amount);
+    addIncome(entry) {
+        this.incomes.push(entry);
+        this.#income += entry.amount;
     }
-    addExpense(amount) {
-        this.#expenses += Number(amount);
+    addExpense(entry) {
+        this.expenses.push(entry);
+        this.#expenses += entry.amount;
     }
     //gets
     get totalIncome() {
@@ -65,6 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
     //budget total
     const amountAvailableSpan = document.querySelector("#amount-available");
 
+    //decription 
+    
+
     //show date 
     const days =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     todaysDateSpan.textContent = days[new Date().getDay()];
@@ -95,15 +111,20 @@ document.addEventListener("DOMContentLoaded", () => {
     submitIncomeBtn.addEventListener("click", () => {
         addIncomeContainer.style.display = "none";
         addIncomeBtn.style.display = "flex";
+
+        const title = incomeTitleInput.value.trim();
         const amount = Number(incomeInputAmount.value);
         //change string to number
-        if(!amount) { //if NOT AMOUNT - no amount entered
-            alert("Uh oh! You didn't enter an Income amount!");
+        const description = document.querySelector("#description-textbox-income").value.trim();
+        if(!title || !amount) { //if NOT AMOUNT - no amount entered
+            alert("Uh oh! You're missing information!");
             return;
         }
 
-        budget.addIncome(amount);
+        const entry = new Entry(title, amount, description);
+        budget.addIncome(entry);
         updateUI();//function that updates the website when added 
+        updateLogs();
     });
 
     addExpenseBtn.addEventListener("click", () => {
@@ -114,20 +135,51 @@ document.addEventListener("DOMContentLoaded", () => {
     submitExpenseBtn.addEventListener("click", () => {
         addExpenseContainer.style.display = "none";
         addExpenseBtn.style.display = "flex";
+
+        const title = document.querySelector("#expense-input-description").value.trim();
         const amount = Number(expenseInputAmount.value);
-        //string to number 
-        if(!amount) {
-            alert("Uh oh! You didn't enter an Expense amount!");
+        //string to number
+        const description = document.querySelector("#description-textbox-expenses").value.trim();
+
+        if(!title || !amount) {
+            alert("Uh oh! You're missing information!");
             return
         }
-        budget.addExpense(amount);
+
+        const entry = new Entry(title, amount, description);
+        budget.addExpense(entry);
+
         updateUI();
+        updateLogs();
     })
     //create updateUI
     function updateUI() {
         totalIncomeSpan.textContent = formatMoney(budget.totalIncome);
         totalExpensesSpan.textContent = formatMoney(budget.totalExpenses);
         amountAvailableSpan.textContent = formatMoney(budget.available);
+    }
+    //updating log list
+    function updateLogs() {
+        const incomeList = document.querySelector("#income-list");
+        const expenseList = document.querySelector("#expense-list");
+        
+        incomeList.innerHTML = "";
+        expenseList.innerHTML = "";
+        //adding elements through js for logs
+        budget.incomes.forEach(entry => {
+            const item = document.createElement("li");
+            item.innerHTML = 
+            `<strong>${entry.title}</strong> - $${formatMoney(entry.amount)}<br><small>${entry.description}</small>`;
+            incomeList.appendChild(item);
+        });
+        budget.expenses.forEach(entry => {
+            const item = document.createElement("li");
+            item.innerHTML = 
+            `<strong>${entry.title}</strong> - $${formatMoney(entry.amount)}<br><small>${entry.description}</small>`;
+            expenseList.appendChild(item);
+        });
+
+
     }
 
 
