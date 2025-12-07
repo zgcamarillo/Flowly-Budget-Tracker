@@ -37,7 +37,7 @@ function formatMoney(amount) {
 
 //DOM events- have to wrap UI dependent code 
 document.addEventListener("DOMContentLoaded", () => {
-    //creating budget instance 
+    //creating budget instance - budget brain 
     const budget = new Budget();
 
     //POPUP variables
@@ -51,13 +51,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const addIncomeBtn = document.querySelector("#add-income-btn");
     const addIncomeContainer = document.querySelector("#add-income-container");
     const submitIncomeBtn = document.querySelector("#submit-income-btn");
-    const incomeInputAmount = document.querySelector("incomeInputAmount");
-    const totalIncomeSpan = document.querySelector("totalIncome");
+    const incomeInputAmount = document.querySelector("#incomeInputAmount");
+    const totalIncomeSpan = document.querySelector("#totalIncome");
+    const incomeTitleInput = document.querySelector("#income-description-input");
 
     //EXPENSES Variables 
-    const addExpenseBtn = document.querySelector("add-expense-btn");
-    const addExpenseContaiiner = document.querySelector("add-expense-container");
-    const submitExpenseBtn = document.querySelector("submit-expense-btn");
+    const addExpenseBtn = document.querySelector("#add-expense-btn");
+    const addExpenseContainer = document.querySelector("#add-expense-container");
+    const submitExpenseBtn = document.querySelector("#submit-expense-btn");
     const expenseInputAmount = document.querySelector("#expense-input-amount");
     const totalExpensesSpan = document.querySelector("#expenseTotal");
 
@@ -85,7 +86,49 @@ document.addEventListener("DOMContentLoaded", () => {
         welcomePopup.style.display = "none";
     });
 
+    //open and close income and expense
+    addIncomeBtn.addEventListener("click", () => {
+        addIncomeBtn.style.display = "none"; //hide the add income button
+        addIncomeContainer.style.display = 
+           (addIncomeContainer.style.display === "flex" ? "none" : "flex");//contdition ? valueIfTrue : valueIfFalse
+    }); 
+    submitIncomeBtn.addEventListener("click", () => {
+        addIncomeContainer.style.display = "none";
+        addIncomeBtn.style.display = "flex";
+        const amount = Number(incomeInputAmount.value);
+        //change string to number
+        if(!amount) { //if NOT AMOUNT - no amount entered
+            alert("Uh oh! You didn't enter an Income amount!");
+            return;
+        }
 
+        budget.addIncome(amount);
+        updateUI();//function that updates the website when added 
+    });
+
+    addExpenseBtn.addEventListener("click", () => {
+        addExpenseBtn.style.display = "none"; //hide add expense button
+        addExpenseContainer.style.display = 
+            (addExpenseContainer.style.display === "flex" ? "none" : "flex");
+    });
+    submitExpenseBtn.addEventListener("click", () => {
+        addExpenseContainer.style.display = "none";
+        addExpenseBtn.style.display = "flex";
+        const amount = Number(expenseInputAmount.value);
+        //string to number 
+        if(!amount) {
+            alert("Uh oh! You didn't enter an Expense amount!");
+            return
+        }
+        budget.addExpense(amount);
+        updateUI();
+    })
+    //create updateUI
+    function updateUI() {
+        totalIncomeSpan.textContent = formatMoney(budget.totalIncome);
+        totalExpensesSpan.textContent = formatMoney(budget.totalExpenses);
+        amountAvailableSpan.textContent = formatMoney(budget.available);
+    }
 
 
 })
