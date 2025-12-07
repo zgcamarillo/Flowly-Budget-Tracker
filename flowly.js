@@ -17,6 +17,7 @@ class Budget {
     get totalExpenses() {
         return this.#expenses;
     }
+    //calculate remaining 
     get available() {
         return this.#income - this.#expenses;
     }
@@ -49,6 +50,14 @@ document.addEventListener("DOMContentLoaded", () => {
     //INCOME variables
     const addIncomeBtn = document.querySelector("#add-income-btn");
     const addIncomeContainer = document.querySelector("#add-income-container");
+    const submitIncomeBtn = document.querySelector("#submit-income-btn");
+    const incomeInputAmount = document.querySelector("incomeInputAmount");
+    const totalIncomeSpan = document.querySelector("totalIncome");
 
+    //EXPENSES Variables 
+    const addExpenseBtn = document.querySelector("add-expense-btn");
+    const addExpenseContaiiner = document.querySelector("add-expense-container");
+    const submitExpenseBtn = document.querySelector("submit-expense-btn");
+    const expenseInputAmount = document
 
 })

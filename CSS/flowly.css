@@ -187,8 +187,8 @@ header h1 {
   font-family: "myConthrax", sans-serif;
 }
 
-#add-income-container input[type=textbox],
-#add-expense-container input[type=textbox] {
+#add-income-container input[type=text],
+#add-expense-container input[type=text] {
   background-color: #0c131d;
   border-radius: 15px;
   font-size: 10px;
