@@ -78,7 +78,12 @@ document.addEventListener("DOMContentLoaded", () => {
     //budget total
     const amountAvailableSpan = document.querySelector("#amount-available");
 
-    //decription 
+    //decription toggles
+    const addIncomeDescriptionBtn = document.querySelector("#add-income-description-btn");
+    const incomeDescriptionTextBox = document.querySelector("#description-textbox-income");
+    const addExpenseDescriptionBtn = document.querySelector("#add-expense-description-btn");
+    const expenseDescriptionTextbox = document.querySelector("#description-textbox-expenses");
+
     
 
     //show date 
@@ -151,13 +156,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         updateUI();
         updateLogs();
-    })
+    });
     //create updateUI
     function updateUI() {
         totalIncomeSpan.textContent = formatMoney(budget.totalIncome);
         totalExpensesSpan.textContent = formatMoney(budget.totalExpenses);
         amountAvailableSpan.textContent = formatMoney(budget.available);
-    }
+    };
     //updating log list
     function updateLogs() {
         const incomeList = document.querySelector("#income-list");
@@ -178,9 +183,18 @@ document.addEventListener("DOMContentLoaded", () => {
             `<strong>${entry.title}</strong> - $${formatMoney(entry.amount)}<br><small>${entry.description}</small>`;
             expenseList.appendChild(item);
         });
+    };
+    //income description toggle
+    addIncomeDescriptionBtn.addEventListener("click", () => {
+        incomeDescriptionTextBox.style.display =
+        incomeDescriptionTextBox.style.display === "flex" ? "none" : "flex";
+    });
+    //expense description toggler
+    addExpenseDescriptionBtn.addEventListener("click", () => {
+        expenseDescriptionTextbox.style.display =
+        expenseDescriptionTextbox.style.display === "flex" ? "none" : "flex";
+    })
 
-
-    }
 
 
 })
