@@ -1,0 +1,208 @@
+$primary-color: #16e9d9;
+$secondary-color: #5d78e6;
+$text-color: #0c131d;
+
+$header-color: $text-color;
+$border-color: $text-color;
+
+@mixin gradient($color1, $color2) {
+    background: linear-gradient(135deg, $color1 0%, $color2 100%)
+}
+@font-face {
+    font-family: "myConthrax";
+    src: url(/Fonts/conthrax/Conthrax-SemiBold.otf) format('opentype');
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    @include gradient($primary-color, $secondary-color);
+}
+header {
+    margin: 0;
+    background-color: $header-color;
+    top: 0;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 50px;
+}
+header h1 {
+    @include gradient($primary-color
+    , $secondary-color);
+    background-clip: text;
+    color: transparent;
+    margin: 0;
+    font-family: "myConthrax";
+}
+
+#welcome-popup {
+    display: none;
+    position: fixed;
+    background-color: rgba($header-color, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+.popup-content {
+    background-color: $header-color;
+    font-family: "myConthrax", sans-serif;
+    padding: 30px;
+    border-radius: 20px;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 20px;
+}
+.popup-content button {
+    width: 150px;
+
+}
+#welcome-popup h2 {
+    @include gradient(
+        $primary-color, $secondary-color);
+    font-size: 40px;
+    text-wrap: wrap;
+    background-clip: text;
+    color: transparent;
+    max-width: 250px;
+    margin-bottom: 0;
+}
+#popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#name-input {
+    padding: 10px;
+    border-radius: 20px;
+    font-family: "myConthrax", sans-serif;
+    margin-bottom: 20px;
+    width: 250px;
+}
+#welcome-popup button {
+    @include gradient($primary-color, $secondary-color);
+    color: $text-color;
+    padding: 10px 20px;
+    border: 1px solid $border-color;
+    border-radius: 20px;
+    font-family: "myConthrax", sans-serif;
+}
+#welcome-content {
+    font-family: "myConthrax";
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#budget-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "myConthrax", sans-serif;
+}
+#budget-container button {
+    @include gradient($primary-color, $secondary-color);;
+    border-radius: 15px;
+    font-size: 25px;
+    padding: 3px 10px;
+
+}
+#amount-available-container,
+#income-input-container,
+#fixed-expenses-container
+ {
+    background-color: $header-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 10px;
+    margin: 10px;
+    border-radius: 15px;
+}
+#amount-available-container h2,
+#income-input-container h2,
+#fixed-expenses-container h2
+ {
+    @include gradient($primary-color, $secondary-color);
+    font-size: 30px;
+    background-clip: text;
+    color: transparent;
+}
+#add-income-container,
+#add-expense-container {
+    @include gradient($primary-color, $secondary-color);
+    padding: 10px 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    display: none;
+}
+#add-income-container input[type=number],
+#add-expense-container input[type=number] {
+    background-color: $header-color;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    font-family: "myConthrax", sans-serif;
+    width: 100%;
+}
+#add-income-container select {
+    background-color: $header-color;
+    width: 80%;
+    height: 30px;
+    color: white;
+    font-family: "myConthrax", sans-serif;
+    font-size: 10px;
+    border-radius: 10px;
+}
+#add-income-container #add-income-description-btn,
+#add-expense-container #add-expense-description-btn {
+    font-size: 10px;
+    font-family: "myConthrax", sans-serif;
+}
+#add-income-container input[type=textbox],
+#add-expense-container input[type=textbox] {
+    background-color: $header-color;
+    border-radius: 15px;
+    font-size: 10px;
+    font-family: "myConthrax", sans-serif;
+    height: 20px;
+    color: white;
+}
+#add-income-container #submit-income-btn,
+#add-expense-container #submit-expense-btn {
+    font-size: 10px;
+    width: 50%;
+    font-family: "myConthrax", sans-serif;
+}
+#add-income-container input[type=text],
+#add-expense-container input[type=text] {
+    width: 80%;
+    background-color: $header-color;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
+    font-family: "myConthrax", sans-serif;
+}

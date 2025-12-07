@@ -1,0 +1,216 @@
+@font-face {
+  font-family: "myConthrax";
+  src: url(/Fonts/conthrax/Conthrax-SemiBold.otf) format("opentype");
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background: linear-gradient(135deg, #16e9d9 0%, #5d78e6 100%);
+}
+
+header {
+  margin: 0;
+  background-color: #0c131d;
+  top: 0;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  height: 50px;
+}
+
+header h1 {
+  background: linear-gradient(135deg, #16e9d9 0%, #5d78e6 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  margin: 0;
+  font-family: "myConthrax";
+}
+
+#welcome-popup {
+  display: none;
+  position: fixed;
+  background-color: rgba(12, 19, 29, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+.popup-content {
+  background-color: #0c131d;
+  font-family: "myConthrax", sans-serif;
+  padding: 30px;
+  border-radius: 20px;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.popup-content button {
+  width: 150px;
+}
+
+#welcome-popup h2 {
+  background: linear-gradient(135deg, #16e9d9 0%, #5d78e6 100%);
+  font-size: 40px;
+  text-wrap: wrap;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  max-width: 250px;
+  margin-bottom: 0;
+}
+
+#popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#name-input {
+  padding: 10px;
+  border-radius: 20px;
+  font-family: "myConthrax", sans-serif;
+  margin-bottom: 20px;
+  width: 250px;
+}
+
+#welcome-popup button {
+  background: linear-gradient(135deg, #16e9d9 0%, #5d78e6 100%);
+  color: #0c131d;
+  padding: 10px 20px;
+  border: 1px solid #0c131d;
+  border-radius: 20px;
+  font-family: "myConthrax", sans-serif;
+}
+
+#welcome-content {
+  font-family: "myConthrax";
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#budget-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "myConthrax", sans-serif;
+}
+
+#budget-container button {
+  background: linear-gradient(135deg, #16e9d9 0%, #5d78e6 100%);
+  border-radius: 15px;
+  font-size: 25px;
+  padding: 3px 10px;
+}
+
+#amount-available-container,
+#income-input-container,
+#fixed-expenses-container {
+  background-color: #0c131d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 10px;
+  margin: 10px;
+  border-radius: 15px;
+}
+
+#amount-available-container h2,
+#income-input-container h2,
+#fixed-expenses-container h2 {
+  background: linear-gradient(135deg, #16e9d9 0%, #5d78e6 100%);
+  font-size: 30px;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+
+#add-income-container,
+#add-expense-container {
+  background: linear-gradient(135deg, #16e9d9 0%, #5d78e6 100%);
+  padding: 10px 30px;
+  border-radius: 15px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  display: none;
+}
+
+#add-income-container input[type=number],
+#add-expense-container input[type=number] {
+  background-color: #0c131d;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  font-family: "myConthrax", sans-serif;
+  width: 100%;
+}
+
+#add-income-container select {
+  background-color: #0c131d;
+  width: 80%;
+  height: 30px;
+  color: white;
+  font-family: "myConthrax", sans-serif;
+  font-size: 10px;
+  border-radius: 10px;
+}
+
+#add-income-container #add-income-description-btn,
+#add-expense-container #add-expense-description-btn {
+  font-size: 10px;
+  font-family: "myConthrax", sans-serif;
+}
+
+#add-income-container input[type=textbox],
+#add-expense-container input[type=textbox] {
+  background-color: #0c131d;
+  border-radius: 15px;
+  font-size: 10px;
+  font-family: "myConthrax", sans-serif;
+  height: 20px;
+  color: white;
+}
+
+#add-income-container #submit-income-btn,
+#add-expense-container #submit-expense-btn {
+  font-size: 10px;
+  width: 50%;
+  font-family: "myConthrax", sans-serif;
+}
+
+#add-income-container input[type=text],
+#add-expense-container input[type=text] {
+  width: 80%;
+  background-color: #0c131d;
+  border-radius: 10px;
+  padding: 5px;
+  color: white;
+  font-family: "myConthrax", sans-serif;
+}/*# sourceMappingURL=flowly.css.map */

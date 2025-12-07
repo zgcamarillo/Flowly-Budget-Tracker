@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowly</title>
+    <link rel="shortcut icon" href="/assets/FlowlyIcon.png">
+    <link rel="stylesheet" href="flowly.css">
+</head>
+<body>
+    <header>
+        <h1>Flowly</h1>
+    </header>
+    <!--POPUP STARTS HERE-->
+    <!-- <div id="welcome-popup">
+        <div class="popup-content">
+            <h2>Welcome To Flowly</h2>
+            <p>Your Personal Budget Tracker</p>
+            <input type="text" id="name-input" placeholder="Please Enter Your Name...">
+            <button id="name-submit">Submit</button>
+        </div>
+    </div> -->
+    <!--POPUP ENDS HERE-->
+    <!--WELCOME MESSAGE-->
+    <main id="welcome-content">
+        <h2>Happy <span id="todays-date"></span>, <span id="user-name"></span>!</h2>
+        <p>Here is the summary of your budget...</p>
+    </main>
+    <!--WELCOME MESSAGE ENDS-->
+    <div id="budget-container">
+        <section id="amount-available-container">
+            <h2>Amount Available: <span id="amount-available">0.00</span></h2>
+        </section>
+        <section id="income-input-container">       
+            <div id="total-income-container">
+                <h2>Total Income: <span id="totalIncome">0.00</span></h2>
+            </div>
+            <button id="add-income-btn">+ ADD INCOME</button>
+            <div id="add-income-container">
+                <input type="number" id="incomeInputAmount" placeholder="$0.00">
+                <input type="text" id="income-description-input" placeholder="Income Title">
+                <input type="textbox" id="description-textbox" placeholder="Your Description...">
+                <button id="add-income-description-btn">+ Add Description</button>
+                <select id="pay-period-input" placeholder="Select Your Payroll Period">
+                    <option>Select Pay Frequency</option>
+                    <option value="additional">Additional</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="biWeekly">Bi-Weekly</option>
+                    <option value="weekly">Weekly</option>
+                </select>
+                <button id="submit-income-btn">+ ADD</button>
+            </div>
+        </section>
+        <section id="fixed-expenses-container">
+            <h2>Expenses Total: <span id="expenseTotal">0.00</span></h2>
+            <button id="add-expense-btn">+ ADD EXPENSE</button>
+            <div id="add-expense-container">
+                <input type="number" id="expense-input-amount" placeholder="$0.00">
+                <input type="text" id="expense-input-description" placeholder="Expense Title">
+                 <input type="textbox" id="description-textbox" placeholder="Your Description...">
+                <button id="add-expense-description-btn">+ Add Description</button>
+                <button id="submit-expense-btn">+ ADD</button>
+            </div>
+        </section>
+    </div>
+    <footer>
+
+    </footer>
+    <script src="flowly.js"></script>
+</body>
+</html>
