@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flowly</title>
     <link rel="shortcut icon" href="/assets/FlowlyIcon.png">
-    <link rel="stylesheet" href="flowly.css">
+    <link rel="stylesheet" href="/CSS/flowly.css">
 </head>
 <body>
     <header>
         <h1>Flowly</h1>
     </header>
     <!--POPUP STARTS HERE-->
-    <!-- <div id="welcome-popup">
+    <div id="welcome-popup">
         <div class="popup-content">
             <h2>Welcome To Flowly</h2>
             <p>Your Personal Budget Tracker</p>
             <input type="text" id="name-input" placeholder="Please Enter Your Name...">
             <button id="name-submit">Submit</button>
         </div>
-    </div> -->
+    </div>
     <!--POPUP ENDS HERE-->
     <!--WELCOME MESSAGE-->
     <main id="welcome-content">
@@ -39,7 +39,7 @@
             <div id="add-income-container">
                 <input type="number" id="incomeInputAmount" placeholder="$0.00">
                 <input type="text" id="income-description-input" placeholder="Income Title">
-                <input type="textbox" id="description-textbox" placeholder="Your Description...">
+                <input type="textbox" id="description-textbox-income" placeholder="Your Description...">
                 <button id="add-income-description-btn">+ Add Description</button>
                 <select id="pay-period-input" placeholder="Select Your Payroll Period">
                     <option>Select Pay Frequency</option>
@@ -57,7 +57,7 @@
             <div id="add-expense-container">
                 <input type="number" id="expense-input-amount" placeholder="$0.00">
                 <input type="text" id="expense-input-description" placeholder="Expense Title">
-                 <input type="textbox" id="description-textbox" placeholder="Your Description...">
+                 <input type="textbox" id="description-textbox-expenses" placeholder="Your Description...">
                 <button id="add-expense-description-btn">+ Add Description</button>
                 <button id="submit-expense-btn">+ ADD</button>
             </div>

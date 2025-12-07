@@ -36,7 +36,6 @@ header h1 {
 }
 
 #welcome-popup {
-  display: none;
   position: fixed;
   background-color: rgba(12, 19, 29, 0.8);
   display: flex;
