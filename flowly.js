@@ -119,6 +119,11 @@ document.addEventListener("DOMContentLoaded", () => {
         addIncomeBtn.style.display = "none"; //hide the add income button
         addIncomeContainer.style.display = 
            (addIncomeContainer.style.display === "flex" ? "none" : "flex");//contdition ? valueIfTrue : valueIfFalse
+
+        //clear previous input 
+        incomeTitleInput.value = "";
+        incomeInputAmount.value= "";
+        incomeDescriptionTextBox.value = "";
     }); 
     submitIncomeBtn.addEventListener("click", () => {
         addIncomeContainer.style.display = "none";
@@ -143,6 +148,11 @@ document.addEventListener("DOMContentLoaded", () => {
         addExpenseBtn.style.display = "none"; //hide add expense button
         addExpenseContainer.style.display = 
             (addExpenseContainer.style.display === "flex" ? "none" : "flex");
+
+        //clear previos inputs
+        expenseDescriptionTextbox.value = "";
+        expenseInputAmount.value ="";
+        document.querySelector("#expense-input-description").value = "";
     });
     submitExpenseBtn.addEventListener("click", () => {
         addExpenseContainer.style.display = "none";
