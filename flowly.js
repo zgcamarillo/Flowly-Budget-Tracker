@@ -1,28 +1,28 @@
 //classes + utitlities
-    //Entry class 
+    //Entry class - single income - or expense card 
     class Entry {
         constructor(title, amount, description) {
             this.title = title;
-            this.amount = Number(amount);
+            this.amount = Number(amount); //amount will be stored as a number 
             this.description = description;
-            this.id = Date.now();
+            this.id = Date.now(); //time stamp 
         }
     }
-    //budget class
+    //budget class- the brains - managing incomes sn expenses 
 class Budget {
     #income = 0; //private fields
     #expenses = 0;
-    incomes = [];
+    incomes = [];//array to store entries
     expenses = [];
     //methods 
     addIncome(entry) {
         this.incomes.push(entry);
         this.#income += entry.amount;
-    }
+    }//updates total income w every entry 
     addExpense(entry) {
         this.expenses.push(entry);
         this.#expenses += entry.amount;
-    }
+    }//updaates total income with every entry 
     //gets
     get totalIncome() {
         return this.#income;
@@ -41,6 +41,7 @@ class Budget {
 function capitalize(text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
     //charAt(0) -grabbing character at said index.
+    //capitalizing the first letter of every string
 }
 
 function formatMoney(amount) {
@@ -53,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //creating budget instance - budget brain 
     const budget = new Budget();
 
-    //POPUP variables
+    //POPUP variables - welcome message and users name 
     const welcomePopup = document.querySelector("#welcome-popup");
     const nameInput = document.querySelector("#name-input");
     const nameSubmitButton = document.querySelector("#name-submit");
@@ -87,11 +88,17 @@ document.addEventListener("DOMContentLoaded", () => {
     
 
     //show date 
+    const today = new Date();
     const days =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-    todaysDateSpan.textContent = days[new Date().getDay()];
+    todaysDateSpan.textContent = days[today.getDay()];
         //date- built in object 
         //new Date creates an object with the current date
         //getDay an object that returns the number index of the day of the week 
+    //show full date 
+    const fullDateSpan = document.querySelector("#full-date");
+    //telling the computer how i want my want my dates 
+    const options = { year: 'numeric', month: 'long', day: 'numeric'};
+    fullDateSpan.textContent = today.toLocaleDateString(undefined, options);
     
     //taking users name and putting it in the main
     nameSubmitButton.addEventListener("click", () => {
@@ -159,18 +166,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     //create updateUI
     function updateUI() {
-        totalIncomeSpan.textContent = formatMoney(budget.totalIncome);
-        totalExpensesSpan.textContent = formatMoney(budget.totalExpenses);
-        amountAvailableSpan.textContent = formatMoney(budget.available);
+        //adding $ sign in front of updated numbers
+        totalIncomeSpan.textContent = "$" + formatMoney(budget.totalIncome);
+        totalExpensesSpan.textContent = "$" + formatMoney(budget.totalExpenses);
+        //adding money spent 
+        amountAvailableSpan.textContent = "$" + formatMoney(budget.available);
+        //updating money spent 
+        const spentAmountSpan = document.querySelector("#spent-amount");
+        spentAmountSpan.textContent = "$" +formatMoney(budget.totalExpenses);
+
+
     };
     //updating log list
     function updateLogs() {
         const incomeList = document.querySelector("#income-list");
         const expenseList = document.querySelector("#expense-list");
-        
+        //clearing old logs 
         incomeList.innerHTML = "";
         expenseList.innerHTML = "";
-        //adding elements through js for logs
+        //adding elements through js to create "log cards"
         budget.incomes.forEach(entry => {
             const item = document.createElement("li");
             item.innerHTML = 

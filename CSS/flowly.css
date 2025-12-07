@@ -1,3 +1,14 @@
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
 @font-face {
   font-family: "myConthrax";
   src: url(/Fonts/conthrax/Conthrax-SemiBold.otf) format("opentype");
@@ -9,10 +20,12 @@ html, body {
 }
 
 body {
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background: linear-gradient(135deg, #f4bdb5 0%, #562969 100%);
+  background: linear-gradient(180deg, #f4bdb5, #562969, #f7d2c5);
+  min-height: 200vh;
+  background-attachment: scroll;
+  background-size: 100% 150%;
+  animation: gradientMove 20s ease infinite;
+  -webkit-text-stroke: 1px #ad7f4d;
 }
 
 header {
@@ -27,7 +40,7 @@ header {
 }
 
 header h1 {
-  background: linear-gradient(135deg, #f4bdb5 0%, #562969 100%);
+  background: linear-gradient(160deg, #f4bdb5 0%, #562969 100%);
   -webkit-background-clip: text;
           background-clip: text;
   color: transparent;
@@ -70,7 +83,7 @@ header h1 {
 }
 
 #welcome-popup h2 {
-  background: linear-gradient(135deg, #f4bdb5 0%, #562969 100%);
+  background: linear-gradient(160deg, #f4bdb5 0%, #562969 100%);
   font-size: 40px;
   text-wrap: wrap;
   -webkit-background-clip: text;
@@ -97,7 +110,7 @@ header h1 {
 }
 
 #welcome-popup button {
-  background: linear-gradient(135deg, #f4bdb5 0%, #562969 100%);
+  background: linear-gradient(160deg, #f4bdb5 0%, #562969 100%);
   color: white;
   padding: 10px 20px;
   border: 1px solid #ad7f4d;
@@ -113,6 +126,16 @@ header h1 {
   justify-content: center;
   align-items: center;
   color: white;
+  text-align: center;
+  height: 50vh;
+}
+
+#main-date-weather {
+  font-family: "myConthrax", sans-serif;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 #budget-container {
@@ -124,7 +147,7 @@ header h1 {
 }
 
 #budget-container button {
-  background: linear-gradient(135deg, #f4bdb5 0%, #562969 100%);
+  background: linear-gradient(160deg, #f4bdb5 0%, #562969 100%);
   border-radius: 15px;
   font-size: 25px;
   padding: 3px 10px;
@@ -143,21 +166,27 @@ header h1 {
   margin: 10px;
   border-radius: 15px;
   border: 2px #ad7f4d solid;
+  text-align: center;
 }
 
 #amount-available-container h2,
 #income-input-container h2,
-#fixed-expenses-container h2 {
-  background: linear-gradient(135deg, #f4bdb5 0%, #562969 100%);
+#fixed-expenses-container h2,
+#spent-container h4 {
+  background: linear-gradient(160deg, #f4bdb5 0%, #562969 100%);
   font-size: 30px;
   -webkit-background-clip: text;
           background-clip: text;
   color: transparent;
 }
 
+#spent-container h4 {
+  font-size: 15px;
+}
+
 #add-income-container,
 #add-expense-container {
-  background: linear-gradient(135deg, #f4bdb5 0%, #562969 100%);
+  background: linear-gradient(160deg, #f4bdb5 0%, #562969 100%);
   padding: 10px 20px;
   border-radius: 15px;
   margin-top: 20px;
@@ -186,7 +215,7 @@ header h1 {
 #add-income-container select {
   background-color: white;
   width: 80%;
-  height: 30px;
+  height: 40px;
   font-family: "myConthrax", sans-serif;
   font-size: 10px;
   border-radius: 10px;
@@ -205,7 +234,6 @@ header h1 {
   font-size: 15px;
   font-family: "myConthrax", sans-serif;
   height: 20px;
-  color: white;
   padding: 10px;
   width: 100%;
 }
@@ -229,4 +257,89 @@ header h1 {
 #description-textbox-income,
 #description-textbox-expenses {
   display: none;
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .popup-content {
+    width: 40%;
+    height: auto;
+    border-radius: 30px;
+    padding-bottom: 30px;
+  }
+  main {
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  #full-date {
+    font-size: 25px;
+  }
+  #welcome-content h2 {
+    font-size: 30px;
+  }
+  #welcome-content p {
+    font-size: 15px;
+  }
+  #budget-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  #amount-available-container {
+    width: 90%;
+    max-width: 90vw;
+    margin-bottom: 20px;
+  }
+  #income-input-container,
+  #fixed-expenses-container {
+    width: 45%;
+    margin: 5px;
+  }
+  #budget-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+  #income-log ul,
+  #expense-log ul {
+    max-height: 100px;
+    overflow-y: auto;
+  }
+}
+@media (min-width: 1024px) {
+  #budget-container {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  #amount-available-container {
+    width: 95%;
+    text-align: center;
+    margin-bottom: 20px;
+    max-width: 1200px;
+  }
+  #budget-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+  }
+  #income-input-container,
+  #fixed-expenses-container {
+    width: 48%;
+  }
+  #income-log,
+  #expense-log {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+  }
 }/*# sourceMappingURL=flowly.css.map */

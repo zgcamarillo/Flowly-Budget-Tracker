@@ -1,12 +1,22 @@
 $primary-color: #f4bdb5;
 $secondary-color: #562969;
+$tertiary-color: #f7d2c5;
 $text-color: white;
 $border-color: #ad7f4d;
 $header-color: $text-color;
 
 
-@mixin gradient($color1, $color2) {
-    background: linear-gradient(135deg, $color1 0%, $color2 100%)
+@mixin gradient($color1, $color2, $color3:null) {
+    @if $color3 {
+        background: linear-gradient(180deg, $color1 0%, $color2 50%, $color3 100%);
+    } @else {
+        background: linear-gradient(160deg, $color1 0%, $color2 100%);
+    }
+}
+@keyframes gradientMove {
+    0% {background-position: 0% 0%; }
+    50% {background-position: 0% 100%; }
+    100% {background-position: 0% 0%;}
 }
 @font-face {
     font-family: "myConthrax";
@@ -18,10 +28,12 @@ html, body {
     padding: 0;
 }
 body {
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    @include gradient($primary-color, $secondary-color);
+    background: linear-gradient(180deg,$primary-color, $secondary-color, $tertiary-color);
+    min-height: 200vh;
+    background-attachment: scroll;
+    background-size: 100% 150%; //stretches so it looks smooth
+    animation: gradientMove 20s ease infinite;
+    -webkit-text-stroke: 1px $border-color;
 }
 header {
     margin: 0;
@@ -114,6 +126,15 @@ header h1 {
     justify-content: center;
     align-items: center;
     color: white;
+    text-align: center;
+    height: 50vh;
+}
+#main-date-weather {
+    font-family: "myConthrax", sans-serif;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 #budget-container {
     display: flex;
@@ -143,15 +164,20 @@ header h1 {
     margin: 10px;
     border-radius: 15px;
     border: 2px $border-color solid;
+    text-align: center;
 }
 #amount-available-container h2,
 #income-input-container h2,
-#fixed-expenses-container h2
+#fixed-expenses-container h2,
+#spent-container h4
  {
     @include gradient($primary-color, $secondary-color);
     font-size: 30px;
     background-clip: text;
     color: transparent;
+}
+#spent-container h4 {
+    font-size: 15px;
 }
 #add-income-container,
 #add-expense-container {
@@ -181,7 +207,7 @@ header h1 {
 #add-income-container select {
     background-color: $header-color;
     width: 80%;
-    height: 30px;
+    height: 40px;
     font-family: "myConthrax", sans-serif;
     font-size: 10px;
     border-radius: 10px;
@@ -198,7 +224,6 @@ header h1 {
     font-size: 15px;
     font-family: "myConthrax", sans-serif;
     height: 20px;
-    color: white;
     padding: 10px;
     width: 100%;
 }
@@ -219,4 +244,88 @@ header h1 {
 #description-textbox-income,
 #description-textbox-expenses {
     display: none;
+    transition: all 0.3s ease;
+}
+@media (min-width: 768px) {
+    .popup-content {
+        width: 40%;
+        height: auto;
+        border-radius: 30px;
+        padding-bottom: 30px;
+    }
+    main {
+        height: 40vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    #full-date {
+        font-size: 25px;
+    }
+    #welcome-content h2 {
+        font-size: 30px;
+    }
+    #welcome-content p {
+        font-size: 15px;
+    }
+    #budget-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    #amount-available-container {
+        width: 90%;
+        max-width: 90vw;
+        margin-bottom: 20px;
+    }
+    #income-input-container,
+    #fixed-expenses-container {
+        width: 45%;
+        margin: 5px;
+    }
+    #budget-row {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
+    #income-log ul,
+    #expense-log ul {
+        max-height: 100px;
+        overflow-y: auto;
+    }
+}
+@media (min-width: 1024px) {
+    #budget-container {
+        max-width: 1200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+    #amount-available-container {
+        width: 95%;
+        text-align: center;
+        margin-bottom: 20px;
+        max-width: 1200px;
+    }
+    #budget-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        width: 100%;
+    }
+    #income-input-container,
+    #fixed-expenses-container {
+        width: 48%;
+    }
+    #income-log,
+    #expense-log {
+        display: flex;
+        flex-direction: column;
+        width: 48%;
+    }
 }
